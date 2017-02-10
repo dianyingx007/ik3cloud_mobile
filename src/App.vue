@@ -1,13 +1,21 @@
 <template>
     <div id="app">
         <img src="./assets/logo.png">
+        <header-layout></header-layout>
         <router-view></router-view>
+        <footer-layout></footer-layout>
+        <router-link to='/'>go to hello</router-link>
+        <router-link to='/home2'>go to hello2</router-link>
     </div>
 </template>
 
 <script>
+import headerLayout from 'components/Header'
+import footerLayout from 'components/Footer'
+
 export default {
-    name: 'app'
+    name: 'app',
+    components: {headerLayout, footerLayout}
 }
 </script>
 
