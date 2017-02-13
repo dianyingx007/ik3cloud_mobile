@@ -6,7 +6,7 @@
 </template>
 <style>
 header {
-    position: absolute;
+    position: fixed;
     top: 0;
     background-color: #006CE3;
     width: 100%;
@@ -14,7 +14,7 @@ header {
     text-align: center;
     color: #FFF;
     line-height: 1rem;
-    font-size: 16px;
+    font-size: 0.4rem;
 }
 .menu_icon {
 	display: inline-block;
