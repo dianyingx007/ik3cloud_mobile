@@ -1,9 +1,20 @@
 <template>
     <header>
-        <a class='menu_icon'></a>
-		<p><slot></slot></p>
+        <a class='menu_icon' @click="deliver"></a>
+		<p>{{current}}</p>
     </header>
 </template>
+<script>
+export default {
+    name: 'header',
+    props: ['current'],
+    methods: {
+        deliver () {
+            this.$emit('showmenu', this.current)
+        }
+    }
+}
+</script>
 <style>
 header {
     position: fixed;

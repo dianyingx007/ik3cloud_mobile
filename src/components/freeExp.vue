@@ -5,6 +5,7 @@
 .free_exp {
     position: fixed;
     bottom: 0;
+    left: 0;
     text-align: center;
     width: 100%;
     line-height: 1rem;

@@ -1,8 +1,8 @@
 <template>
     <div id="app">
-        <menu-layout></menu-layout>
+        <menu-layout @changeTitle="changeTitle"></menu-layout>
         <div class='right'>
-            <header-layout :current="current" @showmenu="showmenu"></header-layout>
+            <header-layout :current="currentTitle" @showmenu="showmenu"></header-layout>
             <router-view></router-view>
             <footer-layout></footer-layout>
             <free-exp></free-exp>
@@ -20,12 +20,16 @@ export default {
     name: 'app',
     data () {
         return {
-            current: '首页'
+            currentTitle: '首页'
         }
     },
     methods: {
         showmenu (a) {
             console.log(a)
+        },
+        changeTitle (title) {
+            this.currentTitle = title
+            console.log(2)
         }
     },
     components: {menuLayout, headerLayout, footerLayout, freeExp}
@@ -48,5 +52,13 @@ img {
 }
 a {
     text-decoration: none;
+}
+#app .right {
+    position: relative;
+    transform: translate(0, 0);
+    transition: all 0.5s;
+}
+li {
+    list-style-type: none;
 }
 </style>
