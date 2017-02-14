@@ -1,4 +1,4 @@
-;(function(win){
+var flexible = function(win) {
 	/*变量：*/
 	var doc = win.document;
 	var docEL = doc.documentElement;
@@ -91,4 +91,6 @@
 
 	refreshRem();
 
-})(window);
+};
+
+export default flexible

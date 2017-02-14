@@ -2,7 +2,7 @@
     <div id="app">
         <menu-layout></menu-layout>
         <div class='right'>
-            <header-layout>{{current}}</header-layout>
+            <header-layout :current="current" @showmenu="showmenu"></header-layout>
             <router-view></router-view>
             <footer-layout></footer-layout>
             <free-exp></free-exp>
@@ -11,18 +11,21 @@
 </template>
 
 <script>
-import flexible from 'ignore_lib/flexible.js'
 import menuLayout from 'components/menu'
 import headerLayout from 'components/Header'
 import footerLayout from 'components/Footer'
 import freeExp from 'components/freeExp'
 
-flexible
 export default {
     name: 'app',
     data () {
         return {
             current: '首页'
+        }
+    },
+    methods: {
+        showmenu (a) {
+            console.log(a)
         }
     },
     components: {menuLayout, headerLayout, footerLayout, freeExp}
@@ -42,5 +45,8 @@ img {
     content: '';
     display: block;
     clear: both;
+}
+a {
+    text-decoration: none;
 }
 </style>
