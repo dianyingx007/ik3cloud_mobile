@@ -56,7 +56,7 @@ export default {
 }
 #home .detail {
     margin-left: 2.6rem;
-    margin-right: 0.1rem
+    margin-right: 0.1rem;
 }
 .detail h3 {
     font-size: 0.4rem;
@@ -64,7 +64,7 @@ export default {
     line-height: 0.8rem;
 }
 .detail p {
-    font-size: 0.25rem;
+    font-size: 0.3rem;
     line-height: 0.4rem;
     color: #555;
 }
