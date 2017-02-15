@@ -48,7 +48,7 @@ export default {
     background-size: cover;
 }
 #home .row {
-    margin: 0.4rem 0;
+    margin: 0.5rem 0;
 }
 #home .icon {
     margin: 0 0.4rem;
@@ -70,6 +70,6 @@ export default {
 }
 #home hr {
     margin: 0 0.4rem;
-    border: 0.5px solid #EEE;
+    border: 0.5px solid #DDD;
 }
 </style>

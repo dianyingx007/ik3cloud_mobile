@@ -2,7 +2,7 @@
     <div id="menu">
         <div class="logo">LOGO</div>
         <router-link tag='li' v-for='(link, index) in links' :to='link.to' :class="{active:index === currentIndex}">
-            <a>
+            <a class="row">
                 <span @click='changeIndex(index, link.title)'>{{link.title}}</span>
             </a>
         </router-link>
@@ -45,7 +45,6 @@ export default {
     background-color: #007FFF;
     text-align: center;
     width: 4rem;
-    display: none
 }
 #menu .logo {
     height: 1rem;
@@ -61,6 +60,7 @@ export default {
 }
 #menu a {
     color: #FFF;
+    display: inline-block;
 }
 #menu li.active {
     background-color: #FFF;
@@ -69,7 +69,14 @@ export default {
     color: #007FFF;
     font-weight: 800;
 }
-.showmenu#menu {
-    display: block;
+/*实现标签的移动动画*/
+#menu .row {
+    transition: opacity 0.5s ease,transform 0.3s ease;
+    transform: translate(4rem,0);
+    opacity: 0;
+}
+.showmenu#menu .row {
+    transform: translate(0,0);
+    opacity: 1;
 }
 </style>

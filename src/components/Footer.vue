@@ -9,7 +9,7 @@
 <style>
 footer {
     background-color: #535353;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
     text-align: center;
 }
 .mini_logo {

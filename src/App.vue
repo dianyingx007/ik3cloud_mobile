@@ -8,7 +8,7 @@
             :current="currentTitle"
             @click.native="hidemenu()"
             @showmenu="showmenu"></header-layout>
-        <div class='right'
+        <div class='right clearfix'
             :class="{showmenu:menuFlag}"
             @click="hidemenu()">
             <router-view></router-view>
@@ -70,15 +70,15 @@ img {
 a {
     text-decoration: none;
 }
+li {
+    list-style-type: none;
+}
 #app .right {
     position: relative;
     transition: all 0.5s;
-    box-shadow: -0.1rem 0 0.4rem rgba(0,0,0,.3);
     background-color: #FFF;
     z-index: 1;
-}
-li {
-    list-style-type: none;
+    box-shadow: -0.1rem 0 0.4rem rgba(0,0,0,.3);
 }
 #app .right.showmenu {
     transform: translate(4rem,0);

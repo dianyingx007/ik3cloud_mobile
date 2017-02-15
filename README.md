@@ -2,6 +2,10 @@
 
 > use vue.js to refactor ik3cloud for mobile
 
+ik3cloud移动页面的demo
+
+使用Vue-cli脚手架搭建环境
+
 ## Build Setup
 
 ``` bash
