@@ -1,12 +1,22 @@
 <template>
     <div id="app">
-        <menu-layout @changeTitle="changeTitle"></menu-layout>
-        <div class='right'>
-            <header-layout :current="currentTitle" @showmenu="showmenu"></header-layout>
+        <menu-layout
+            :class="{showmenu:menuFlag}"
+            @changeTitle="changeTitle"></menu-layout>
+        <header-layout
+            :class="{showmenu:menuFlag}"
+            :current="currentTitle"
+            @click.native="hidemenu()"
+            @showmenu="showmenu"></header-layout>
+        <div class='right'
+            :class="{showmenu:menuFlag}"
+            @click="hidemenu()">
             <router-view></router-view>
             <footer-layout></footer-layout>
-            <free-exp></free-exp>
         </div>
+        <free-exp
+            :class="{showmenu:menuFlag}"
+            @click.native="hidemenu()"></free-exp>
     </div>
 </template>
 
@@ -20,16 +30,23 @@ export default {
     name: 'app',
     data () {
         return {
-            currentTitle: '首页'
+            currentTitle: '首页',
+            menuFlag: false
         }
     },
     methods: {
-        showmenu (a) {
-            console.log(a)
+        showmenu () {
+            if (!this.menuFlag) {
+                this.menuFlag = true
+            } else {
+                this.menuFlag = false
+            }
+        },
+        hidemenu () {
+            this.menuFlag = false
         },
         changeTitle (title) {
             this.currentTitle = title
-            console.log(2)
         }
     },
     components: {menuLayout, headerLayout, footerLayout, freeExp}
@@ -55,10 +72,21 @@ a {
 }
 #app .right {
     position: relative;
-    transform: translate(0, 0);
     transition: all 0.5s;
+    box-shadow: -0.1rem 0 0.4rem rgba(0,0,0,.3);
+    background-color: #FFF;
+    z-index: 1;
 }
 li {
     list-style-type: none;
+}
+#app .right.showmenu {
+    transform: translate(4rem,0);
+}
+#app header.showmenu {
+    transform: translate(4rem,0);
+}
+#app .free_exp.showmenu {
+    transform: translate(4rem,0);
 }
 </style>

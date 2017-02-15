@@ -1,6 +1,7 @@
 <template>
     <div id="menu">
-        <router-link tag='li' v-for='(link, index) in links' :to='link.to' >
+        <div class="logo">LOGO</div>
+        <router-link tag='li' v-for='(link, index) in links' :to='link.to' :class="{active:index === currentIndex}">
             <a>
                 <span @click='changeIndex(index, link.title)'>{{link.title}}</span>
             </a>
@@ -38,24 +39,37 @@ export default {
 </script>
 <style>
 #menu {
-    position: absolute;
+    position: fixed;
     left: 0;
     height: 100%;
     background-color: #007FFF;
+    text-align: center;
     width: 4rem;
-    box-shadow: -3px 0 10px rgba(0,0,0,.3) inset;
-    z-index: 255;
-    transform: translate(0,0);
-    transition: all 0.5s;
+    display: none
+}
+#menu .logo {
+    height: 1rem;
+    line-height: 1rem;
+    color: #FFF;
+    background-color: #007AAA;
 }
 #menu li {
     width: 100%;
     height: 1rem;
     line-height: 1rem;
-    text-align: center;
     font-size: 0.4rem;
 }
 #menu a {
     color: #FFF;
+}
+#menu li.active {
+    background-color: #FFF;
+}
+#menu li.active a {
+    color: #007FFF;
+    font-weight: 800;
+}
+.showmenu#menu {
+    display: block;
 }
 </style>
