@@ -8,9 +8,11 @@
             :current="currentTitle"
             @click.native="hidemenu()"
             @showmenu="showmenu"></header-layout>
+        <transition name="click-bug">
+            <div class="click_bug" v-show="menuFlag" @click="hidemenu()"></div>
+        </transition>
         <div class='right clearfix'
-            :class="{showmenu:menuFlag}"
-            @click="hidemenu()">
+            :class="{showmenu:menuFlag}">
             <router-view></router-view>
             <footer-layout></footer-layout>
         </div>
@@ -73,6 +75,9 @@ a {
 li {
     list-style-type: none;
 }
+#app {
+    overflow: hidden;
+}
 #app .right {
     position: relative;
     transition: all 0.5s;
@@ -88,5 +93,28 @@ li {
 }
 #app .free_exp.showmenu {
     transform: translate(4rem,0);
+}
+
+/*
+ *修复点击bug
+ *bug：当显示菜单栏时，点击右边模块的链接，会跳转
+*/
+.click_bug {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(99,99,99,.1);
+    z-index: 254;
+    margin-left: 4rem;
+}
+.click-bug-enter-active {
+    transition: all .5s;
+}
+.click-bug-leave-active {
+    transition: all .2s;
+}
+.click-bug-enter, .click-bug-leave-active {
+    transform: translateX(-4rem);
+    opacity: 0;
 }
 </style>
