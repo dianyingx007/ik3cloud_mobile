@@ -7,7 +7,7 @@
 <script>
 export default {
     name: 'header',
-    props: ['current'],
+    props: ['current'], /* 这里的current是标题 */
     methods: {
         deliver () {
             this.$emit('showmenu')

@@ -11,6 +11,7 @@
 <script>
 export default {
     name: 'menu',
+    props: ['current'], /* 这里的current时links.to类型的值 */
     data () {
         return {
             links: [{
@@ -33,6 +34,19 @@ export default {
         changeIndex (index, title) {
             this.currentIndex = index
             this.$emit('changeTitle', title)
+        }
+    },
+    watch: {
+        current: {
+            handler (val, oldVal) {
+                var that = this
+                this.links.forEach(function (ele, index) {
+                    if (val === ele.to) {
+                        that.currentIndex = index
+                        that.$emit('changeTitle', ele.title)
+                    }
+                })
+            }
         }
     }
 }

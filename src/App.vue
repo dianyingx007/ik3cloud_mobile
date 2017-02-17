@@ -2,6 +2,7 @@
     <div id="app">
         <menu-layout
             :class="{showmenu:menuFlag}"
+            :current="currentHash"
             @changeTitle="changeTitle"></menu-layout>
         <header-layout
             :class="{showmenu:menuFlag}"
@@ -33,6 +34,7 @@ export default {
     data () {
         return {
             currentTitle: '首页',
+            currentHash: '',
             menuFlag: false
         }
     },
@@ -51,7 +53,12 @@ export default {
             this.currentTitle = title
         }
     },
-    components: {menuLayout, headerLayout, footerLayout, freeExp}
+    components: {menuLayout, headerLayout, footerLayout, freeExp},
+    /* 检测当前页面的hash */
+    mounted () {
+        this.currentHash = location.hash.slice(1)
+        console.log(this.currentHash)
+    }
 }
 </script>
 
