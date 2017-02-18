@@ -3,7 +3,7 @@
         <div class="logo">LOGO</div>
         <router-link tag='li' v-for='(link, index) in links' :to='link.to' :class="{active:index === currentIndex}">
             <a class="row">
-                <span @click='changeIndex(index, link.title)'>{{link.title}}</span>
+                <span @click='changeIndex(index, link.title)'>{{link.title}}</span><!--因为router-link会屏蔽子级a标签的click事件-->
             </a>
         </router-link>
     </div>
@@ -59,6 +59,8 @@ export default {
     background-color: #007FFF;
     text-align: center;
     width: 4rem;
+    transition: all 0.5s;
+    transform: translate(-4rem, 0);
 }
 #menu .logo {
     height: 1rem;
@@ -85,12 +87,15 @@ export default {
 }
 /*实现标签的移动动画*/
 #menu .row {
-    transition: opacity 0.5s ease,transform 0.3s ease;
-    transform: translate(4rem,0);
+    transition: opacity 0.5s ease,transform 0.5s ease;
+    transform: translate(8rem,0);
     opacity: 0;
 }
+.showmenu#menu {
+    transform: translate(0, 0);
+}
 .showmenu#menu .row {
-    transform: translate(0,0);
+    transform: translate(0, 0);
     opacity: 1;
 }
 </style>

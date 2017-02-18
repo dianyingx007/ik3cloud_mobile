@@ -57,7 +57,6 @@ export default {
     /* 检测当前页面的hash */
     mounted () {
         this.currentHash = location.hash.slice(1)
-        console.log(this.currentHash)
     }
 }
 </script>
@@ -91,6 +90,7 @@ li {
     background-color: #FFF;
     z-index: 1;
     box-shadow: -0.1rem 0 0.4rem rgba(0,0,0,.3);
+    margin-top: 1rem;
 }
 #app .right.showmenu {
     transform: translate(4rem,0);
