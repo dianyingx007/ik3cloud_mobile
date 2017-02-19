@@ -9,7 +9,19 @@
                 你的浏览器不支持视频
             </video>
         </div>
-        <div class="industries">list</div>
+        <div class="industries">
+            <div v-for="item in industries">
+                <div class="industry">{{item.industry}}</div>
+                <div class="customer_row" v-for="customer in item.customers">
+                    <div class="logo" :style="{backgroundColor: customer.logo}"></div>
+                    <div>
+                        <p class="name">{{customer.name}}</p>
+                        <p class="description">{{customer.description}}</p>
+                    </div>
+                    <hr/>
+                </div>
+            </div>
+        </div>
         <div class="more">
             <p>这些客户都选择我们的服务</p>
             <div>客户logo大全</div>
@@ -57,6 +69,7 @@ export default {
 }
 </script>
 <style>
+/* 视频 */
 #customer .video {
     position: relative;
     height: 5rem;
@@ -92,6 +105,44 @@ export default {
     width: 100%;
     height: 5rem;
 }
+
+/* 客户list */
+.industry {
+    border: 1px solid #007FFF;
+    border-radius: 0.2rem;
+    height: 1rem;
+    width: 9rem;
+    margin: 0.2rem auto;
+    font-size: 0.5rem;
+    line-height: 1rem;
+    text-align: center;
+}
+.customer_row {
+    width: 9rem;
+    height: 2rem;    
+    margin: 0.2rem auto;
+}
+.customer_row div {
+    display: inline-block;
+    vertical-align: top;
+    height: 2rem;
+    overflow: hidden;    
+}
+.customer_row hr {
+    margin: 0.1rem 0;
+}
+.customer_row .logo {
+    width: 3rem;
+}
+.customer_row .name {
+    font-size: 0.4rem;
+    color: #007FFF;
+}
+.customer_row .description {
+    font-size: 0.35rem;
+}
+
+/* more 客户图标 */
 #customer .more {
     background-color: #EFEFEF;
 }
