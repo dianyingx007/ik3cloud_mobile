@@ -10,8 +10,12 @@
             </video>
         </div>
         <div class="industries">
-            <div v-for="item in industries">
-                <div class="industry">{{item.industry}}</div>
+            <div v-for="(item, index) in industries">
+                <div class="industry"
+                    :class="{active : index === industryCur}"
+                    @click="showOrHide(index)">
+                    {{item.industry}}
+                </div>
                 <div class="customer_row" v-for="customer in item.customers">
                     <div class="logo" :style="{backgroundColor: customer.logo}"></div>
                     <div>
@@ -33,6 +37,7 @@ export default {
     name: 'customer',
     data () {
         return {
+            industryCur: 0,
             industries: [{
                 industry: '互联网',
                 customers: [{
@@ -64,6 +69,13 @@ export default {
                     description: '中国最大的金融公司，最赚钱公司'
                 }]
             }]
+        }
+    },
+    methods: {
+        showOrHide (index) {
+            if (this.industryCur === index) {
+                this.industryCur = -1
+            } else this.industryCur = index
         }
     }
 }
@@ -116,7 +128,21 @@ export default {
     font-size: 0.5rem;
     line-height: 1rem;
     text-align: center;
+    background-image: url('../assets/Customer/btn_right.png');
+    background-repeat: no-repeat;
+    background-position: 90% 50%;
 }
+.industry~.customer_row {
+    display: none;
+}
+/* 选中效果 */
+.industry.active {
+    background-image: url('../assets/Customer/btn_bottom.png');    
+}
+.industry.active~.customer_row {
+    display: block;
+}
+
 .customer_row {
     width: 9rem;
     height: 2rem;    
