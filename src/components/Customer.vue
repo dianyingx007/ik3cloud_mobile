@@ -16,13 +16,13 @@
                     @click="showOrHide(index)">
                     {{item.industry}}
                 </div>
-                <div class="customer_row" v-for="customer in item.customers">
+                <div class="customer_row" v-for="(customer, cusIndex) in item.customers">
                     <div class="logo" :style="{backgroundColor: customer.logo}"></div>
                     <div>
                         <p class="name">{{customer.name}}</p>
                         <p class="description">{{customer.description}}</p>
                     </div>
-                    <hr/>
+                    <hr v-if="cusIndex < item.customers.length - 1"/>
                 </div>
             </div>
         </div>
@@ -137,7 +137,7 @@ export default {
 }
 /* 选中效果 */
 .industry.active {
-    background-image: url('../assets/Customer/btn_bottom.png');    
+    background-image: url('../assets/Customer/btn_bottom.png');
 }
 .industry.active~.customer_row {
     display: block;
@@ -145,14 +145,14 @@ export default {
 
 .customer_row {
     width: 9rem;
-    height: 2rem;    
+    height: 2rem;
     margin: 0.2rem auto;
 }
 .customer_row div {
     display: inline-block;
     vertical-align: top;
     height: 2rem;
-    overflow: hidden;    
+    overflow: hidden;
 }
 .customer_row hr {
     margin: 0.1rem 0;
